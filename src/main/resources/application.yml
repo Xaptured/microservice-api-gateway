@@ -1,0 +1,39 @@
+server:
+  port: 8086
+  ssl:
+    hostname-verification: none
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: CLIENT-SERVICE
+          uri: lb://CLIENT-SERVICE
+          predicates:
+            - Path=/comments/**
+
+        - id: PROFESSION-SERVICE
+          uri: lb://PROFESSION-SERVICE
+          predicates:
+            - Path=/details/**,/skills/**
+
+        - id: YOUTUBE-SERVICE
+          uri: lb://YOUTUBE-SERVICE
+          predicates:
+            - Path=/youtube/**
+
+        - id: INSTAGRAM-SERVICE
+          uri: lb://INSTAGRAM-SERVICE
+          predicates:
+            - Path=/instagram/**
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
