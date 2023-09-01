@@ -31,7 +31,7 @@ public class SecurityConfig {
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http.formLogin().and().authorizeExchange()
-                .pathMatchers("/actuator/**").hasRole(ROLE)
+                .pathMatchers("/actuator/**").hasRole(ROLE).anyExchange().permitAll()
                 .and()
                 .logout().and().csrf().disable().httpBasic(Customizer.withDefaults());
         return http.build();
