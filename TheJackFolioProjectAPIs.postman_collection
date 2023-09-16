@@ -1,0 +1,303 @@
+{
+	"info": {
+		"_postman_id": "77b26e7b-3f8e-45f2-949b-9f4f3cc930dd",
+		"name": "TheJackFolioProject",
+		"description": "This is my portfolio project which shows my information, skills, experience in both professional and personal paths. Not only that it also connects you and me through social media sites where I upload my content.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "15175549"
+	},
+	"item": [
+		{
+			"name": "YouTube",
+			"item": [
+				{
+					"name": "get-videos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8086/youtube/get-videos",
+						"description": "YouTube API used to get top 5 videos according to the date"
+					},
+					"response": []
+				}
+			],
+			"description": "#### The YouTube folder consists of get videos request from the YouTube API service.\n\n- get videos"
+		},
+		{
+			"name": "Instagram",
+			"item": [
+				{
+					"name": "get-posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8086/instagram/get-posts"
+					},
+					"response": []
+				}
+			],
+			"description": "#### The Instagram folder consists of posts get request from the Instagram Basic Display API service.\n\n- get posts"
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Comments",
+					"item": [
+						{
+							"name": "save-comments",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"string\",\r\n  \"comments\": \"string\",\r\n  \"replied\": false,\r\n  \"message\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8086/comments/save-comments"
+							},
+							"response": []
+						},
+						{
+							"name": "get-comments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8086/comments/get-comments"
+							},
+							"response": []
+						}
+					],
+					"description": "#### The Comments folder consists of comment requests from the portfolio app.\n\n- save comments\n- get comments\n    \n\n###### _Will be adding more requests related to new client onboarding process. Currently this feature is out of scope._"
+				}
+			],
+			"description": "#### The Client folder consists of requests from the portfolio app related to client."
+		},
+		{
+			"name": "Profession",
+			"item": [
+				{
+					"name": "Details",
+					"item": [
+						{
+							"name": "save-details",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"personalDetails\": {\r\n    \"name\": {\r\n      \"firstName\": \"string\",\r\n      \"middleName\": \"string\",\r\n      \"lastName\": \"string\"\r\n    },\r\n    \"description\":\"string\",\r\n    \"email\": \"string\",\r\n    \"dateOfBirth\": \"2023-08-23T10:15:38.082Z\",\r\n    \"address\": {\r\n      \"flatNumber\": \"string\",\r\n      \"society\": \"string\",\r\n      \"city\": \"string\",\r\n      \"pinCode\": 0,\r\n      \"state\": \"string\",\r\n      \"country\": \"string\"\r\n    },\r\n    \"phoneNumber\": \"string\",\r\n    \"education\": {\r\n      \"collegeName\": \"string\",\r\n      \"branch\": \"string\",\r\n      \"fromDate\": \"2023-08-23T10:15:38.082Z\",\r\n      \"toDate\": \"2023-08-23T10:15:38.082Z\"\r\n    },\r\n    \"link\": {\r\n      \"linkedinLink\": \"string\",\r\n      \"githubLink\": \"string\",\r\n      \"youtubeLink\": \"string\",\r\n      \"instagramLink\": \"string\"\r\n    }\r\n  },\r\n  \"professionalDetails\": [\r\n    {\r\n      \"organization\": {\r\n        \"name\": \"string\",\r\n        \"fromDate\": \"2023-08-23T10:15:38.082Z\",\r\n        \"toDate\": \"2023-08-23T10:15:38.082Z\"\r\n      },\r\n      \"projects\": [\r\n        {\r\n          \"name\": \"string\",\r\n          \"description\": \"string\",\r\n          \"techStacks\": [\r\n            \"JAVA\"\r\n          ],\r\n          \"roles\": [\r\n            \"string\"\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"responseMessage\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8086/details/save-details"
+							},
+							"response": []
+						},
+						{
+							"name": "get-details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8086/details/get-details"
+							},
+							"response": []
+						}
+					],
+					"description": "#### The Details folder consists of detail (personal & professional) requests from the portfolio app.\n\n- save details\n- get details"
+				},
+				{
+					"name": "Skills",
+					"item": [
+						{
+							"name": "save-skills",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"skills\": {\r\n    \"PERSONAL\": [\r\n      \"string\"\r\n    ],\r\n    \"PROFESSIONAL\": [\r\n      \"string1\",\"string2\" \r\n    ]\r\n  },\r\n  \"message\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8086/skills/save-skills"
+							},
+							"response": []
+						},
+						{
+							"name": "get-skills",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8086/skills/get-skills"
+							},
+							"response": []
+						}
+					],
+					"description": "#### The Skills folder consists of skill (personal & professional) requests from the portfolio app.\n\n- save skills\n- get skills"
+				}
+			],
+			"description": "#### The Profesion folder consists of detail & skill requests from the portfolio app."
+		},
+		{
+			"name": "TheJackFolio_DB",
+			"item": [
+				{
+					"name": "Clients",
+					"item": [
+						{
+							"name": "save-comments",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"string\",\r\n  \"comments\": \"string\",\r\n  \"replied\": false,\r\n  \"message\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/clients/save-comments"
+							},
+							"response": []
+						},
+						{
+							"name": "get-comments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/clients/get-comments"
+							},
+							"response": []
+						}
+					],
+					"description": "#### The Client folder consists of comment requests from the client service.\n\n- save comments\n- get comments\n    \n\n###### _Will be adding more requests related to new client onboarding process. Currently this feature is out of scope._"
+				},
+				{
+					"name": "Details",
+					"item": [
+						{
+							"name": "save-details",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"personalDetails\": {\r\n    \"name\": {\r\n      \"firstName\": \"string\",\r\n      \"middleName\": \"string\",\r\n      \"lastName\": \"string\"\r\n    },\r\n    \"email\": \"string\",\r\n    \"dateOfBirth\": \"2023-08-23T10:15:38.082Z\",\r\n    \"address\": {\r\n      \"flatNumber\": \"string\",\r\n      \"society\": \"string\",\r\n      \"city\": \"string\",\r\n      \"pinCode\": 0,\r\n      \"state\": \"string\",\r\n      \"country\": \"string\"\r\n    },\r\n    \"phoneNumber\": \"string\",\r\n    \"education\": {\r\n      \"collegeName\": \"string\",\r\n      \"branch\": \"string\",\r\n      \"fromDate\": \"2023-08-23T10:15:38.082Z\",\r\n      \"toDate\": \"2023-08-23T10:15:38.082Z\"\r\n    },\r\n    \"link\": {\r\n      \"linkedinLink\": \"string\",\r\n      \"githubLink\": \"string\",\r\n      \"youtubeLink\": \"string\",\r\n      \"instagramLink\": \"string\"\r\n    }\r\n  },\r\n  \"professionalDetails\": [\r\n    {\r\n      \"organization\": {\r\n        \"name\": \"string\",\r\n        \"fromDate\": \"2023-08-23T10:15:38.082Z\",\r\n        \"toDate\": \"2023-08-23T10:15:38.082Z\"\r\n      },\r\n      \"projects\": [\r\n        {\r\n          \"name\": \"string\",\r\n          \"description\": \"string\",\r\n          \"techStacks\": [\r\n            \"JAVA\"\r\n          ],\r\n          \"roles\": [\r\n            \"string\"\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"responseMessage\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/details/save-details"
+							},
+							"response": []
+						},
+						{
+							"name": "get-details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/details/get-details"
+							},
+							"response": []
+						}
+					],
+					"description": "#### The Details folder consists of detail (personal & professional) requests from the profession service.\n\n- save details\n- get details"
+				},
+				{
+					"name": "Skills",
+					"item": [
+						{
+							"name": "save-skills",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"skills\": {\r\n    \"PERSONAL\": [\r\n      \"string1\",\"string2\"\r\n    ],\r\n    \"PROFESSIONAL\": [\r\n      \"string1\",\"string2\"\r\n    ]\r\n  },\r\n  \"message\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/skills/save-skills"
+							},
+							"response": []
+						},
+						{
+							"name": "get-skills",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/skills/get-skills"
+							},
+							"response": []
+						}
+					],
+					"description": "#### The Skills folder consists of skill (personal & professional) requests from the profession service.\n\n- save skills\n    \n- get skills"
+				},
+				{
+					"name": "Instagram-Token",
+					"item": [
+						{
+							"name": "save-token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"token\": \"string\",\r\n  \"creationDate\": \"2023-08-23\",\r\n  \"expirationDate\": \"2023-08-23\",\r\n  \"message\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/instagram-token/save-token"
+							},
+							"response": []
+						},
+						{
+							"name": "get-token",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/instagram-token/get-token"
+							},
+							"response": []
+						}
+					],
+					"description": "#### The Instagram-Token folder consists of token requests from the instagram-oauth-client and instagram services.\n\n- save skills\n    \n- get skills"
+				}
+			],
+			"description": "##### This folder consists of all the requests which are related to Database operations cmoing from Portfolio app."
+		}
+	]
+}
