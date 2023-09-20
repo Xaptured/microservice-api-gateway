@@ -1,6 +1,7 @@
 package com.thejackfolio.microservices.apigateway.configurations;
 
 import com.thejackfolio.microservices.apigateway.utilities.PropertiesReader;
+import com.thejackfolio.microservices.apigateway.utilities.StringConstants;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -16,9 +17,9 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 public class SecurityConfig {
 
 
-    private static final String USERNAME = PropertiesReader.getProperty("USERNAME");
-    private static final String PASSWORD = PropertiesReader.getProperty("PASSWORD");
-    private static final String ROLE = PropertiesReader.getProperty("ROLE");
+    private static final String USERNAME = PropertiesReader.getProperty(StringConstants.USERNAME);
+    private static final String PASSWORD = PropertiesReader.getProperty(StringConstants.PASSWORD);
+    private static final String ROLE = PropertiesReader.getProperty(StringConstants.ROLE);
     @Bean
     public MapReactiveUserDetailsService userDetailsService() {
         UserDetails adminUser = User.withUsername(USERNAME)
