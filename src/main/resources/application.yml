@@ -28,6 +28,15 @@ spring:
           uri: lb://INSTAGRAM-SERVICE
           predicates:
             - Path=/instagram/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:3000"
+            allowedMethods:
+              - GET
+              - POST
+            allowedHeaders:
+              - content-type
 
 eureka:
   instance:
