@@ -12,7 +12,7 @@ spring:
         - id: CLIENT-SERVICE
           uri: lb://CLIENT-SERVICE
           predicates:
-            - Path=/comments/**
+            - Path=/comments/**,/emails/**
 
         - id: PROFESSION-SERVICE
           uri: lb://PROFESSION-SERVICE
