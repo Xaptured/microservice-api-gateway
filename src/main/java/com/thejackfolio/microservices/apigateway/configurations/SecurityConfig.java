@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.MapReactiveUserDetailsServi
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.web.client.RestTemplate;
 
 @EnableWebFluxSecurity
 @Configuration
@@ -36,5 +37,10 @@ public class SecurityConfig {
                 .and()
                 .logout().and().csrf().disable().httpBasic(Customizer.withDefaults());
         return http.build();
+    }
+
+    @Bean
+    public RestTemplate template(){
+        return new RestTemplate();
     }
 }

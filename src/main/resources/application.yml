@@ -12,7 +12,9 @@ spring:
         - id: CLIENT-SERVICE
           uri: lb://CLIENT-SERVICE
           predicates:
-            - Path=/comments/**,/emails/**
+            - Path=/comments/**,/emails/**,/credential/**
+          filters:
+            - AuthenticationFilter
 
         - id: PROFESSION-SERVICE
           uri: lb://PROFESSION-SERVICE
@@ -28,6 +30,11 @@ spring:
           uri: lb://INSTAGRAM-SERVICE
           predicates:
             - Path=/instagram/**
+
+        - id: IDENTITY-SERVICE
+          uri: lb://IDENTITY-SERVICE
+          predicates:
+            - Path=/identity/**
       globalcors:
         corsConfigurations:
           '[/**]':
