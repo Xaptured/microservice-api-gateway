@@ -27,8 +27,6 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
     private RouteValidator validator;
     @Autowired
     private JwtUtil jwtUtil;
-    @Autowired
-    private RestTemplate template;
 
     public static class Config {
         private String role;
