@@ -22,9 +22,9 @@ public class JwtUtil {
         try {
             Jws<Claims> claims = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
         } catch (SignatureException | MalformedJwtException | UnsupportedJwtException | IllegalArgumentException ex) {
-            throw new BadCredentialsException("INVALID_CREDENTIALS", ex);
+            throw new BadCredentialsException(StringConstants.UNAUTHORIZED_ACCESS, ex);
         } catch (ExpiredJwtException ex) {
-            throw new CredentialsExpiredException("EXPIRED_CREDENTIALS", ex);
+            throw new CredentialsExpiredException(StringConstants.TOKEN_EXPIRED, ex);
         }
     }
 

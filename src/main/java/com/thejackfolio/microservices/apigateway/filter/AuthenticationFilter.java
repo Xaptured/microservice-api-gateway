@@ -71,22 +71,10 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                     if(!role.equals(config.getRole())){
                         throw new BadCredentialsException(StringConstants.UNAUTHORIZED_ACCESS);
                     }
-                } catch (BadCredentialsException exception) {
+                } catch (BadCredentialsException | HeaderException | CredentialsExpiredException exception) {
                     return Mono.defer(() -> {
                         exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-                        exchange.getResponse().getHeaders().add("Error-Message", StringConstants.UNAUTHORIZED_ACCESS);
-                        return exchange.getResponse().setComplete();
-                    });
-                } catch (HeaderException exception) {
-                    return Mono.defer(() -> {
-                        exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-                        exchange.getResponse().getHeaders().add("Error-Message", StringConstants.HEADER_NOT_FOUND);
-                        return exchange.getResponse().setComplete();
-                    });
-                } catch (CredentialsExpiredException exception) {
-                    return Mono.defer(() -> {
-                        exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-                        exchange.getResponse().getHeaders().add("Error-Message", StringConstants.TOKEN_EXPIRED);
+                        exchange.getResponse().getHeaders().add("Error-Message", exception.getMessage());
                         return exchange.getResponse().setComplete();
                     });
                 }
