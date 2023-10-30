@@ -38,9 +38,4 @@ public class SecurityConfig {
                 .logout().and().csrf().disable().httpBasic(Customizer.withDefaults());
         return http.build();
     }
-
-    @Bean
-    public RestTemplate template(){
-        return new RestTemplate();
-    }
 }

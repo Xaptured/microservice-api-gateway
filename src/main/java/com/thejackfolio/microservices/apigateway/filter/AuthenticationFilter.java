@@ -11,6 +11,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 @Component
 public class AuthenticationFilter extends AbstractGatewayFilterFactory<AuthenticationFilter.Config> {
 
@@ -20,12 +22,27 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
     private RouteValidator validator;
     @Autowired
     private JwtUtil jwtUtil;
-//    @Autowired
-//    private IdentityClient client;
     @Autowired
     private RestTemplate template;
 
-    public static class Config {}
+    public static class Config {
+        private String role;
+
+        public Config() {
+        }
+
+        public Config(String role) {
+            this.role = role;
+        }
+
+        public String getRole() {
+            return role;
+        }
+
+        public void setRole(String role) {
+            this.role = role;
+        }
+    }
 
     public AuthenticationFilter() {
         super(Config.class);
@@ -42,15 +59,14 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
                 if (authHeader != null && authHeader.startsWith(StringConstants.BEARER)) {
                     authHeader = authHeader.substring(7);
                 }
-//                ResponseEntity<Boolean> response = client.validateToken(authHeader);
-//                boolean responseBody = response.getBody();
-//                if(!responseBody){
-//                    LOGGER.error(StringConstants.UNAUTHORIZED_ACCESS);
-//                    throw new RuntimeException(StringConstants.UNAUTHORIZED_ACCESS);
-//                }
                 try {
                     jwtUtil.validateToken(authHeader);
-                } catch (Exception e) {
+                    List<String> rolesFromToken = jwtUtil.getRolesFromToken(authHeader);
+                    String role = rolesFromToken.get(0);
+                    if(!role.equals(config.getRole())){
+                        throw new RuntimeException(StringConstants.UNAUTHORIZED_ACCESS);
+                    }
+                } catch (Exception exception) {
                     LOGGER.error(StringConstants.UNAUTHORIZED_ACCESS);
                     throw new RuntimeException(StringConstants.UNAUTHORIZED_ACCESS);
                 }
