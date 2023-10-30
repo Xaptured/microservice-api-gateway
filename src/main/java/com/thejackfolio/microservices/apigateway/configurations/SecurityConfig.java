@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.MapReactiveUserDetailsServi
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.server.SecurityWebFilterChain;
-import org.springframework.web.client.RestTemplate;
 
 @EnableWebFluxSecurity
 @Configuration
