@@ -8,6 +8,7 @@ public class StringConstants {
     public static final String HEADER_NOT_FOUND = "Header not found";
     public static final String BEARER = "Bearer ";
     public static final String UNAUTHORIZED_ACCESS = "Unauthorized access";
+    public static final String TOKEN_EXPIRED = "Token expired";
 
     public StringConstants(){};
 }

@@ -5,6 +5,7 @@ import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.CredentialsExpiredException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class JwtUtil {
         } catch (SignatureException | MalformedJwtException | UnsupportedJwtException | IllegalArgumentException ex) {
             throw new BadCredentialsException("INVALID_CREDENTIALS", ex);
         } catch (ExpiredJwtException ex) {
-            throw new BadCredentialsException("EXPIRED_CREDENTIALS", ex);
+            throw new CredentialsExpiredException("EXPIRED_CREDENTIALS", ex);
         }
     }
 
