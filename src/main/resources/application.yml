@@ -37,6 +37,12 @@ spring:
           uri: lb://IDENTITY-SERVICE
           predicates:
             - Path=/identity/**
+
+        - id: ORCHESTRATE-SERVICE
+          uri: lb://ORCHESTRATE-SERVICE
+          predicates:
+            - Path=/email/**,/verify
+
       globalcors:
         corsConfigurations:
           '[/**]':
