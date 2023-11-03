@@ -13,10 +13,6 @@ spring:
           uri: lb://CLIENT-SERVICE
           predicates:
             - Path=/comments/**,/emails/**,/credential/**
-          filters:
-            - name: AuthenticationFilter
-              args:
-                role: ADMIN
 
         - id: PROFESSION-SERVICE
           uri: lb://PROFESSION-SERVICE
