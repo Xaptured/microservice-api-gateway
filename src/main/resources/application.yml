@@ -13,6 +13,10 @@ spring:
           uri: lb://CLIENT-SERVICE
           predicates:
             - Path=/comments/**,/emails/**,/credential/**
+          filters:
+            - name: AuthenticationFilter
+#              args:
+#                role: PARTICIPANT
 
         - id: PROFESSION-SERVICE
           uri: lb://PROFESSION-SERVICE
@@ -42,7 +46,7 @@ spring:
         - id: ESPORTS-SERVICE
           uri: lb://ESPORTS-SERVICE
           predicates:
-            - Path=/events/**,/profile/**
+            - Path=/events/**,/profile/**,/games/**
 
       globalcors:
         corsConfigurations:
