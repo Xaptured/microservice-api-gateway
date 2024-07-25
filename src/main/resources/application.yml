@@ -11,17 +11,23 @@ spring:
       routes:
         - id: CLIENT-SERVICE
           uri: lb://CLIENT-SERVICE
+#          Apart from comments service, both emails and credential service are internal services.
+#          Added here so that it will be easy to test in local
           predicates:
-            - Path=/comments/**,/emails/**,/credential/**
+            - Path=/comments/**,/emails/**,/credential/**,/joiners/**
           filters:
             - name: AuthenticationFilter
-#              args:
-#                role: PARTICIPANT
+              args:
+                role: ADMIN
 
         - id: PROFESSION-SERVICE
           uri: lb://PROFESSION-SERVICE
           predicates:
             - Path=/details/**,/skills/**
+          filters:
+            - name: AuthenticationFilter
+              args:
+                role: ADMIN
 
         - id: YOUTUBE-SERVICE
           uri: lb://YOUTUBE-SERVICE
@@ -47,6 +53,10 @@ spring:
           uri: lb://ESPORTS-SERVICE
           predicates:
             - Path=/events/**,/profile/**,/games/**
+#          filters:
+#            - name: AuthenticationFilter
+#              args:
+#                role: ADMIN
 
       globalcors:
         corsConfigurations:
