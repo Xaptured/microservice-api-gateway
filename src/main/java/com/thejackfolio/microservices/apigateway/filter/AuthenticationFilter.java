@@ -55,18 +55,19 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
     public GatewayFilter apply(Config config) {
         return ((exchange, chain) -> {
             if (validator.isSecured.test(exchange.getRequest())) {
-                if (!exchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
-                    throw new HeaderException(StringConstants.HEADER_NOT_FOUND);
-                }
-                String authHeader = exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
-                if (authHeader != null && authHeader.startsWith(StringConstants.BEARER)) {
-                    authHeader = authHeader.substring(7);
-                }
                 try {
+                    if (!exchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
+                        throw new HeaderException(StringConstants.HEADER_NOT_FOUND);
+                    }
+                    String authHeader = exchange.getRequest().getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
+                    if (authHeader != null && authHeader.startsWith(StringConstants.BEARER)) {
+                        authHeader = authHeader.substring(7);
+                    }
+
                     jwtUtil.validateToken(authHeader);
                     List<String> rolesFromToken = jwtUtil.getRolesFromToken(authHeader);
                     String role = rolesFromToken.get(0);
-                    if(!role.equals(config.getRole())){
+                    if(config.getRole() != null && !role.equals(config.getRole())){
                         throw new BadCredentialsException(StringConstants.UNAUTHORIZED_ACCESS);
                     }
                 } catch (BadCredentialsException | HeaderException | CredentialsExpiredException exception) {
