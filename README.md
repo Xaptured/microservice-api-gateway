@@ -1,3 +1,7 @@
+[![Build and Test Java Spring Boot Application](https://github.com/Xaptured/microservice-api-gateway/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/Xaptured/microservice-api-gateway/actions/workflows/build-and-test.yml)
+
+[![Dependabot Updates](https://github.com/Xaptured/microservice-api-gateway/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/Xaptured/microservice-api-gateway/actions/workflows/dependabot/dependabot-updates)
+
 # microservice-api-gateway
 
 This microservice is used as an API Gateway for the other services. All the requests which are coming from frontend side will hit this service and this service is responsible to route those requests to the required services. 
