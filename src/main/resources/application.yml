@@ -58,6 +58,11 @@ spring:
 #              args:
 #                role: ADMIN
 
+        - id: ESPORTS-LAN
+          uri: lb://ESPORTS-LAN
+          predicates:
+            - Path=/organizer/**
+
       globalcors:
         corsConfigurations:
           '[/**]':
