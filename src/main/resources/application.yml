@@ -61,7 +61,7 @@ spring:
         - id: ESPORTS-LAN
           uri: lb://ESPORTS-LAN
           predicates:
-            - Path=/organizer/**,/event/**./participant/**
+            - Path=/organizer/**,/event/**,/participant/**
 
       globalcors:
         corsConfigurations:
