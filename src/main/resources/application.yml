@@ -24,10 +24,10 @@ spring:
           uri: lb://PROFESSION-SERVICE
           predicates:
             - Path=/details/**,/skills/**
-          filters:
-            - name: AuthenticationFilter
-              args:
-                role: ADMIN
+#          filters:
+#            - name: AuthenticationFilter
+#              args:
+#                role: ADMIN
 
         - id: YOUTUBE-SERVICE
           uri: lb://YOUTUBE-SERVICE
@@ -61,7 +61,7 @@ spring:
         - id: ESPORTS-LAN
           uri: lb://ESPORTS-LAN
           predicates:
-            - Path=/organizer/**,/event/**,/participant/**,/audience/**,/admin/**,/payment-gateway/**,/feedback/**
+            - Path=/organizer/**,/event/**,/participant/**,/audience/**,/admin/**,/payment-gateway/**,/feedback/**,/advertisement/**
 
       globalcors:
         corsConfigurations:
