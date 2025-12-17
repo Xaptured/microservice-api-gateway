@@ -63,6 +63,16 @@ spring:
           predicates:
             - Path=/organizer/**,/event/**,/participant/**,/audience/**,/admin/**,/payment-gateway/**,/feedback/**,/advertisement/**
 
+        - id: LIVE-UPDATES-WS
+          uri: lb:ws://LIVE-UPDATES
+          predicates:
+            - Path=/live-updates/ws/**
+
+        - id: LIVE-UPDATES
+          uri: lb://LIVE-UPDATES
+          predicates:
+            - Path=/live-updates/**
+
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -70,8 +80,10 @@ spring:
             allowedMethods:
               - GET
               - POST
+              - OPTIONS
             allowedHeaders:
-              - content-type
+              - "*"
+            allowCredentials: true
 
 eureka:
   instance:
