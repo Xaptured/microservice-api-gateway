@@ -61,7 +61,7 @@ spring:
         - id: ESPORTS-LAN
           uri: lb://ESPORTS-LAN
           predicates:
-            - Path=/organizer/**,/event/**,/participant/**,/audience/**,/admin/**,/payment-gateway/**,/feedback/**,/advertisement/**
+            - Path=/organizer/**,/event/**,/participant/**,/audience/**,/admin/**,/payment-gateway/**,/feedback/**,/advertisement/**,/booking/**
 
         - id: LIVE-UPDATES-WS
           uri: lb:ws://LIVE-UPDATES
